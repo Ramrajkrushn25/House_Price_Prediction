@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Predictor</title>
+    <style>
+        body {
+            background-color: #ffeef5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 35px 45px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        h1, h3 {
+            text-align: center;
+            margin: 0;
+        }
+
+        h1 {
+            color: #c0392b;
+            margin-bottom: 5px;
+            font-size: 28px;
+        }
+
+        h3 {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 30px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+            color: #2c3e50;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            grid-column: span 2;
+            padding: 12px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #c0392b;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 22px;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 House Price Prediction App</h1>
+        <h3>Fill the form below to estimate house price</h3>
+
+        <form method="post">
+            <div>
+                <label>LotFrontage (e.g. 65)</label>
+                <input type="text" name="LotFrontage" placeholder="Enter LotFrontage">
+            </div>
+            <div>
+                <label>LotArea (e.g. 8450)</label>
+                <input type="text" name="LotArea" placeholder="Enter LotArea">
+            </div>
+            <div>
+                <label>LotShape (1=Reg, 2=IR1...)</label>
+                <input type="text" name="LotShape" placeholder="Enter LotShape code">
+            </div>
+            <div>
+                <label>OverallQual (1 to 10)</label>
+                <input type="text" name="OverallQual" placeholder="Enter Overall Quality">
+            </div>
+            <div>
+                <label>OverallCond (1 to 10)</label>
+                <input type="text" name="OverallCond" placeholder="Enter Overall Condition">
+            </div>
+            <div>
+                <label>MasVnrArea (e.g. 196)</label>
+                <input type="text" name="MasVnrArea" placeholder="Enter Masonry Veneer Area">
+            </div>
+            <div>
+                <label>BsmtQual (1=Po, 2=Fa...)</label>
+                <input type="text" name="BsmtQual" placeholder="Enter BsmtQual code">
+            </div>
+            <div>
+                <label>BsmtExposure (1=No, 2=Mn...)</label>
+                <input type="text" name="BsmtExposure" placeholder="Enter BsmtExposure code">
+            </div>
+            <div>
+                <label>BsmtFinType1 (1 to 6)</label>
+                <input type="text" name="BsmtFinType1" placeholder="Enter BsmtFinType1 code">
+            </div>
+            <div>
+                <label>BsmtUnfSF (e.g. 150)</label>
+                <input type="text" name="BsmtUnfSF" placeholder="Enter Unfinished Bsmt SF">
+            </div>
+            <div>
+                <label>TotalBsmtSF (e.g. 856)</label>
+                <input type="text" name="TotalBsmtSF" placeholder="Enter Total Bsmt SF">
+            </div>
+            <div>
+                <label>HeatingQC (1=Poor, 5=Excellent)</label>
+                <input type="text" name="HeatingQC" placeholder="Enter Heating Quality">
+            </div>
+            <div>
+                <label>GrLivArea (e.g. 1710)</label>
+                <input type="text" name="GrLivArea" placeholder="Enter Above Ground SF">
+            </div>
+            <div>
+                <label>BsmtFullBath (0 or 1)</label>
+                <input type="text" name="BsmtFullBath" placeholder="Enter Bsmt Full Bath count">
+            </div>
+            <div>
+                <label>FullBath (e.g. 2)</label>
+                <input type="text" name="FullBath" placeholder="Enter Full Baths">
+            </div>
+            <div>
+                <label>HalfBath (e.g. 1)</label>
+                <input type="text" name="HalfBath" placeholder="Enter Half Baths">
+            </div>
+            <div>
+                <label>BedroomAbvGr (e.g. 3)</label>
+                <input type="text" name="BedroomAbvGr" placeholder="Enter Bedrooms Above Ground">
+            </div>
+            <div>
+                <label>Fireplaces (e.g. 0-3)</label>
+                <input type="text" name="Fireplaces" placeholder="Enter Number of Fireplaces">
+            </div>
+            <div>
+                <label>GarageFinish (1 to 3)</label>
+                <input type="text" name="GarageFinish" placeholder="Enter Garage Finish code">
+            </div>
+            <div>
+                <label>GarageArea (e.g. 548)</label>
+                <input type="text" name="GarageArea" placeholder="Enter Garage Area">
+            </div>
+            <div>
+                <label>WoodDeckSF (e.g. 0-500)</label>
+                <input type="text" name="WoodDeckSF" placeholder="Enter Wood Deck SF">
+            </div>
+            <div>
+                <label>OpenPorchSF (e.g. 0-300)</label>
+                <input type="text" name="OpenPorchSF" placeholder="Enter Open Porch SF">
+            </div>
+            <div>
+                <label>WhetherRemodelled (0 or 1)</label>
+                <input type="text" name="WhetherRemodelled" placeholder="0=No, 1=Yes">
+            </div>
+            <div>
+                <label>AgeOfProperty (e.g. 10)</label>
+                <input type="text" name="AgeOfProperty" placeholder="Enter Age">
+            </div>
+            <div>
+                <label>MSSubClass (like 30, 50, 60...)</label>
+                <input type="text" name="MSSubClass" placeholder="Enter MSSubClass">
+            </div>
+            <div>
+                <label>MSZoning (e.g. RL, RM)</label>
+                <input type="text" name="MSZoning" placeholder="Enter Zoning Type">
+            </div>
+            <div>
+                <label>Neighborhood (e.g. CollgCr)</label>
+                <input type="text" name="Neighborhood" placeholder="Enter Neighborhood">
+            </div>
+            <div>
+                <label>RoofStyle (e.g. Gable)</label>
+                <input type="text" name="RoofStyle" placeholder="Enter Roof Style">
+            </div>
+            <div>
+                <label>Exterior1st (e.g. VinylSd)</label>
+                <input type="text" name="Exterior1st" placeholder="Enter Exterior1st">
+            </div>
+            <div>
+                <label>Exterior2nd (e.g. VinylSd)</label>
+                <input type="text" name="Exterior2nd" placeholder="Enter Exterior2nd">
+            </div>
+            <div>
+                <label>Foundation (e.g. PConc, CBlock)</label>
+                <input type="text" name="Foundation" placeholder="Enter Foundation Type">
+            </div>
+            <div>
+                <label>GarageType (e.g. Attchd)</label>
+                <input type="text" name="GarageType" placeholder="Enter Garage Type">
+            </div>
+            <div>
+                <label>LotConfig (e.g. Inside, CulDSac)</label>
+                <input type="text" name="LotConfig" placeholder="Enter Lot Config">
+            </div>
+            <div>
+                <label>HouseStyle (e.g. 1Story, 2Story)</label>
+                <input type="text" name="HouseStyle" placeholder="Enter House Style">
+            </div>
+            <div>
+                <label>MasVnrType (e.g. BrkFace)</label>
+                <input type="text" name="MasVnrType" placeholder="Enter Masonry Veneer Type">
+            </div>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <strong>Predicted Sale Price:</strong> ${{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
